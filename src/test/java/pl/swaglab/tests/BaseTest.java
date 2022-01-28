@@ -13,7 +13,19 @@ import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
     protected WebDriver driver;
-
+    protected static ExtentHtmlReporter htmlReporter;
+    protected static  ExtentReports extentReports;
+    @BeforeSuite
+    public void beforeSuite(){
+        htmlReporter=new ExtentHtmlReporter("index.html");
+        extentReports=new ExtentReports();
+        extentReports.attachReporter(htmlReporter);
+    }
+    @AfterSuite
+    public void afterSuite(){
+        htmlReporter.flush();
+        extentReports.flush();
+    }
     @BeforeMethod
     public void setUp(){
         driver = DriverFactory.getDriver("chrome");
