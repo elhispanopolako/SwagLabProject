@@ -14,27 +14,33 @@ import java.util.concurrent.TimeUnit;
 public class BaseTest {
     protected WebDriver driver;
     protected static ExtentHtmlReporter htmlReporter;
-    protected static  ExtentReports extentReports;
+    protected static ExtentReports extentReports;
+
     @BeforeSuite
-    public void beforeSuite(){
-        htmlReporter=new ExtentHtmlReporter("index.html");
-        extentReports=new ExtentReports();
+    public void beforeSuite() {
+        htmlReporter = new ExtentHtmlReporter("index.html");
+        extentReports = new ExtentReports();
         extentReports.attachReporter(htmlReporter);
     }
+
     @AfterSuite
-    public void afterSuite(){
+    public void afterSuite() {
         htmlReporter.flush();
         extentReports.flush();
     }
+
     @BeforeMethod
-    public void setUp(){
+    public void setUp() {
         driver = DriverFactory.getDriver("chrome");
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10L, TimeUnit.SECONDS);
         driver.get("https://www.saucedemo.com/");
+        driver.manage().timeouts().implicitlyWait(10L,TimeUnit.SECONDS);
     }
-  @AfterMethod
-    public void tearDown() {driver.quit();}
+
+    /*@AfterMethod
+    public void tearDown() {
+        driver.quit();
+    }*/
 }
 
 

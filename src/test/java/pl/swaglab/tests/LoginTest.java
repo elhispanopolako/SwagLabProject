@@ -14,26 +14,26 @@ public class LoginTest extends BaseTest {
 public void correctLoginTest() throws IOException {
     ExtentTest test= extentReports.createTest("Logowanie standardowego użytkownika");
     HomePage homePage=new HomePage(driver);
-    homePage.setLogin("standard_user","secret_sauce");
-    Assert.assertEquals(homePage.titleProducts.getText(),"PRODUCTS");
+    homePage.login("standard_user","secret_sauce");
+    Assert.assertEquals(homePage.titleProductText(),"PRODUCTS");
     test.log(Status.PASS,"Set correct Login Done-Assertions Passed",SeleniumHelper.getScreenshot(driver));
 }
 @Test
 public void blockUserLoginTest() throws IOException {
     ExtentTest test= extentReports.createTest("Logowanie zablokowanego użytkownika");
     HomePage homePage=new HomePage(driver);
-    homePage.setLogin("standard_user1","secret");
-    Assert.assertTrue(homePage.errorLoginMessage.isDisplayed());
+    homePage.login("standard_user1","secret");
+    Assert.assertTrue(homePage.errorLoginMessage());
     test.log(Status.PASS,"Set Wrong Login Done-Assertions Passed",SeleniumHelper.getScreenshot(driver));
 }
 @Test
 public void addProductTest() throws IOException {
     ExtentTest test= extentReports.createTest("Dodanie produktu do koszyka");
     HomePage homePage=new HomePage(driver);
-    homePage.setLogin("standard_user","secret_sauce");
-    Assert.assertEquals(homePage.titleProducts.getText(),"PRODUCTS");
+    homePage.login("standard_user","secret_sauce");
+    Assert.assertEquals(homePage.titleProductText(),"PRODUCTS");
     homePage.addProduct(0);
-    Assert.assertTrue(homePage.shoppingCartBadge.isDisplayed());
+    Assert.assertTrue(homePage.shoppingBadge());
     test.log(Status.PASS,"Add Product Done-Assertions Passed",SeleniumHelper.getScreenshot(driver));
 }
 
