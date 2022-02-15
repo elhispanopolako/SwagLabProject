@@ -22,12 +22,11 @@ public class HomePage {
     @FindBy(css = "select")
     private WebElement sortList;
 
-    //asercje
     @FindBy(xpath = "//span[text()='Products']")
     private WebElement titleProducts;
-    @FindBy(xpath = "//div[@class='error-message-container error']")
+    @FindBy(css = ".error-message-container.error")
     private WebElement errorLoginMess;
-    @FindBy(xpath = "//span[@class='shopping_cart_badge']")
+    @FindBy(css = ".shopping_cart_badge")
     private WebElement shoppingCartBadge;
 
     private final WebDriver driver;

@@ -14,11 +14,8 @@ public class ShoppingCartPage {
     private WebElement checkoutBtn;
 
 
-
-    //asercja
-    @FindBy(xpath = "//div[@class='removed_cart_item']")
+    @FindBy(css = ".removed_cart_item")
     private WebElement removedItem;
-
 
 
     private final WebDriver driver;
@@ -35,7 +32,8 @@ public class ShoppingCartPage {
     public void clickCheckoutBtn() {
         checkoutBtn.click();
     }
-    public boolean removedItemAssert(){
+
+    public boolean removedItemAssert() {
         removedItem.isEnabled();
         return true;
     }

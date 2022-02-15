@@ -19,7 +19,8 @@ public class CheckoutPage {
     @FindBy(css = ".complete-header")
     private WebElement completeOrder;
     private final WebDriver driver;
-    public CheckoutPage(WebDriver driver){
+
+    public CheckoutPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;
     }
@@ -31,7 +32,8 @@ public class CheckoutPage {
         continueBtn.click();
         finishBtn.click();
     }
-    public String completeOrderText(){
-        return  completeOrder.getText();
+
+    public String completeOrderText() {
+        return completeOrder.getText();
     }
 }

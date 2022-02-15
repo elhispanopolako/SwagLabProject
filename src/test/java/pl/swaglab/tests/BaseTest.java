@@ -34,13 +34,13 @@ public class BaseTest {
         driver = DriverFactory.getDriver("chrome");
         driver.manage().window().maximize();
         driver.get("https://www.saucedemo.com/");
-        driver.manage().timeouts().implicitlyWait(10L,TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10L, TimeUnit.SECONDS);
     }
 
-    /*@AfterMethod
+    @AfterMethod
     public void tearDown() {
         driver.quit();
-    }*/
+    }
 }
 
 

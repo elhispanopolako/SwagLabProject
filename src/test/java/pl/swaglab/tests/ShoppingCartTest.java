@@ -82,7 +82,7 @@ public class ShoppingCartTest extends BaseTest {
         test.log(Status.PASS, "Sort High to Low and add the most expensive product", SeleniumHelper.getScreenshot(driver));
         ShoppingCartPage cartPage = new ShoppingCartPage(driver);
         cartPage.clickCheckoutBtn();
-        CheckoutPage checkPage=new CheckoutPage(driver);
+        CheckoutPage checkPage = new CheckoutPage(driver);
         checkPage.setCheckoutForm("Alex", "Testowy", "39340");
         Assert.assertEquals(checkPage.completeOrderText(), "THANK YOU FOR YOUR ORDER");
         test.log(Status.PASS, "Order Done-Assertions Passed", SeleniumHelper.getScreenshot(driver));

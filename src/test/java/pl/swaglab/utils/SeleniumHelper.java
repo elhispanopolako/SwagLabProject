@@ -12,16 +12,16 @@ import java.io.IOException;
 
 public class SeleniumHelper {
     public static MediaEntityModelProvider getScreenshot(WebDriver driver) throws IOException {
-        String path=takeScreenshot(driver);
+        String path = takeScreenshot(driver);
         return MediaEntityBuilder.createScreenCaptureFromPath(path).build();
     }
 
     private static String takeScreenshot(WebDriver driver) throws IOException {
-        int randomNumber= (int) (Math.random()*1000);
-        TakesScreenshot screenshot= (TakesScreenshot) driver;
-        File file=screenshot.getScreenshotAs(OutputType.FILE);
-        String path="src/test/resources/screenshots/screenshot"+randomNumber+".png";
-        FileUtils.copyFile(file,new File(path));
+        int randomNumber = (int) (Math.random() * 1000);
+        TakesScreenshot screenshot = (TakesScreenshot) driver;
+        File file = screenshot.getScreenshotAs(OutputType.FILE);
+        String path = "src/test/resources/screenshots/screenshot" + randomNumber + ".png";
+        FileUtils.copyFile(file, new File(path));
         return path;
     }
 }
