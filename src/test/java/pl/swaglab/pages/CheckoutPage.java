@@ -5,30 +5,33 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class CheckoutPage {
+public class CheckoutPage extends BasePage {
     @FindBy(id = "first-name")
-    private WebElement chekoutName;
+    private WebElement checkoutName;
+
     @FindBy(id = "last-name")
-    private WebElement chekoutLastName;
+    private WebElement checkoutLastName;
+
     @FindBy(id = "postal-code")
-    private WebElement chekoutPostalCode;
+    private WebElement checkoutPostalCode;
+
     @FindBy(id = "continue")
     private WebElement continueBtn;
+
     @FindBy(id = "finish")
     private WebElement finishBtn;
+
     @FindBy(css = ".complete-header")
     private WebElement completeOrder;
-    private final WebDriver driver;
 
     public CheckoutPage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
-        this.driver = driver;
+        super(driver);
     }
 
     public void setCheckoutForm(String name, String lastname, String postCode) {
-        chekoutName.sendKeys(name);
-        chekoutLastName.sendKeys(lastname);
-        chekoutPostalCode.sendKeys(postCode);
+        checkoutName.sendKeys(name);
+        checkoutLastName.sendKeys(lastname);
+        checkoutPostalCode.sendKeys(postCode);
         continueBtn.click();
         finishBtn.click();
     }

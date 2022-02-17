@@ -7,22 +7,20 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class ShoppingCartPage {
-    @FindBy(xpath = "//div[@class='cart_item']//button")
+public class ShoppingCartPage extends BasePage {
+    @FindBy(css = ".cart_item button")
     private List<WebElement> removeButton;
+
     @FindBy(name = "checkout")
     private WebElement checkoutBtn;
-
 
     @FindBy(css = ".removed_cart_item")
     private WebElement removedItem;
 
 
-    private final WebDriver driver;
 
     public ShoppingCartPage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
-        this.driver = driver;
+        super(driver);
     }
 
     public void removeProduct(int index) {

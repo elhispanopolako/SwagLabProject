@@ -23,7 +23,7 @@ public class LoginTest extends BaseTest {
     public void blockUserLoginTest() throws IOException {
         ExtentTest test = extentReports.createTest("Logowanie zablokowanego użytkownika");
         HomePage homePage = new HomePage(driver);
-        homePage.login("standard_user1", "secret");
+        homePage.badLogin("standard_user1", "secret");
         Assert.assertTrue(homePage.errorLoginMessage());
         test.log(Status.PASS, "Set Wrong Login Done-Assertions Passed", SeleniumHelper.getScreenshot(driver));
     }
@@ -33,7 +33,6 @@ public class LoginTest extends BaseTest {
         ExtentTest test = extentReports.createTest("Dodanie produktu do koszyka");
         HomePage homePage = new HomePage(driver);
         homePage.login("standard_user", "secret_sauce");
-        Assert.assertEquals(homePage.titleProductText(), "PRODUCTS");
         homePage.addProduct(0);
         Assert.assertTrue(homePage.shoppingBadge());
         test.log(Status.PASS, "Add Product Done-Assertions Passed", SeleniumHelper.getScreenshot(driver));

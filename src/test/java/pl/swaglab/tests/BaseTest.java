@@ -9,8 +9,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import pl.swaglab.utils.DriverFactory;
 
-import java.util.concurrent.TimeUnit;
-
 public class BaseTest {
     protected WebDriver driver;
     protected static ExtentHtmlReporter htmlReporter;
@@ -34,7 +32,6 @@ public class BaseTest {
         driver = DriverFactory.getDriver("chrome");
         driver.manage().window().maximize();
         driver.get("https://www.saucedemo.com/");
-        driver.manage().timeouts().implicitlyWait(10L, TimeUnit.SECONDS);
     }
 
     @AfterMethod

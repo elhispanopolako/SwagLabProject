@@ -17,7 +17,6 @@ public class ShoppingCartTest extends BaseTest {
         ExtentTest test = extentReports.createTest("Usunięcie produktu z koszyka");
         HomePage homePage = new HomePage(driver);
         homePage.login("standard_user", "secret_sauce");
-        Assert.assertEquals(homePage.titleProductText(), "PRODUCTS");
         homePage.addProduct(0);
         homePage.goToShoppingCart();
         test.log(Status.PASS, "Add product to Cart", SeleniumHelper.getScreenshot(driver));
@@ -33,7 +32,6 @@ public class ShoppingCartTest extends BaseTest {
         ExtentTest test = extentReports.createTest("Zamówienie Produktu z koszyka");
         HomePage homePage = new HomePage(driver);
         homePage.login("standard_user", "secret_sauce");
-        Assert.assertEquals(homePage.titleProductText(), "PRODUCTS");
         homePage.addProduct(0);
         homePage.goToShoppingCart();
         test.log(Status.PASS, "Add Product", SeleniumHelper.getScreenshot(driver));
@@ -50,8 +48,7 @@ public class ShoppingCartTest extends BaseTest {
         ExtentTest test = extentReports.createTest("add3CheaperProductsOrder2");
         HomePage homePage = new HomePage(driver);
         homePage.login("standard_user", "secret_sauce");
-        Assert.assertEquals(homePage.titleProductText(), "PRODUCTS");
-        homePage.selectLowToHighsort();
+        homePage.selectLowToHighSort();
         test.log(Status.PASS, "Sort low to high Done", SeleniumHelper.getScreenshot(driver));
         homePage.addProduct(0);
         homePage.addProduct(1);
@@ -75,8 +72,7 @@ public class ShoppingCartTest extends BaseTest {
         ExtentTest test = extentReports.createTest("Order the most expensive product");
         HomePage homePage = new HomePage(driver);
         homePage.login("standard_user", "secret_sauce");
-        Assert.assertEquals(homePage.titleProductText(), "PRODUCTS");
-        homePage.selectHighToLowsort();
+        homePage.selectHighToLowSort();
         homePage.addProduct(0);
         homePage.goToShoppingCart();
         test.log(Status.PASS, "Sort High to Low and add the most expensive product", SeleniumHelper.getScreenshot(driver));
