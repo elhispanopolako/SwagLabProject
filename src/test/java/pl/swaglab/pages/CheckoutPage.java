@@ -28,12 +28,13 @@ public class CheckoutPage extends BasePage {
         super(driver);
     }
 
-    public void setCheckoutForm(String name, String lastname, String postCode) {
+    public CheckoutPage setCheckoutForm(String name, String lastname, String postCode) {
         checkoutName.sendKeys(name);
         checkoutLastName.sendKeys(lastname);
         checkoutPostalCode.sendKeys(postCode);
         continueBtn.click();
         finishBtn.click();
+        return this;
     }
 
     public String completeOrderText() {

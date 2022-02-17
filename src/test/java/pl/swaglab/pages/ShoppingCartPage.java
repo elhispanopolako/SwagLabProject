@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 
@@ -23,12 +24,15 @@ public class ShoppingCartPage extends BasePage {
         super(driver);
     }
 
-    public void removeProduct(int index) {
+    public ShoppingCartPage removeProduct(int index) {
         removeButton.get(index).click();
+        wait.until(ExpectedConditions.invisibilityOf(removedItem));
+        return this;
     }
 
-    public void clickCheckoutBtn() {
+    public CheckoutPage clickCheckoutBtn() {
         checkoutBtn.click();
+        return  new CheckoutPage(driver);
     }
 
     public boolean removedItemAssert() {

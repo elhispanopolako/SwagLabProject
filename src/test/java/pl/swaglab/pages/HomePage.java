@@ -49,6 +49,7 @@ public class HomePage extends BasePage {
         logButton.click();
         wait.until(ExpectedConditions.visibilityOf(titleProducts));
     }
+
     public void badLogin(String username, String password) {
         userInput.sendKeys(username);
         passInput.sendKeys(password);
@@ -56,35 +57,33 @@ public class HomePage extends BasePage {
         wait.until(ExpectedConditions.visibilityOf(errorLoginMess));
     }
 
-    public void addProduct(int index) {
+    public HomePage addProduct(int index) {
         addProductsButton.get(index).click();
+        return this;
     }
 
-    public void goToShoppingCart() {
+    public ShoppingCartPage goToShoppingCart() {
         shoppingCartButton.click();
+        return new ShoppingCartPage(driver);
     }
 
-    public void selectLowToHighSort() {
+    public HomePage selectLowToHighSort() {
         Select select = new Select(sortList);
         select.selectByValue("lohi");
+        return this;
     }
 
-    public void selectHighToLowSort() {
+    public HomePage selectHighToLowSort() {
         Select select = new Select(sortList);
         select.selectByValue("hilo");
-
+        return this;
     }
 
     public String titleProductText() {
         return titleProducts.getText();
     }
 
-    public boolean errorLoginMessage() {
-        errorLoginMess.isDisplayed();
-        return true;
-    }
-
-    public boolean shoppingBadge() {
+    public  boolean shoppingBadge() {
         shoppingCartBadge.isDisplayed();
         return true;
     }
