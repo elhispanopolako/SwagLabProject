@@ -3,7 +3,8 @@ package pl.swaglab.pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import static pl.swaglab.utils.WaitForElement.waitUntilElementIsVisible;
 
 public class LoginPage extends BasePage {
     @FindBy(id = "user-name")
@@ -30,14 +31,14 @@ public class LoginPage extends BasePage {
         userInput.sendKeys(username);
         passInput.sendKeys(password);
         logButton.click();
-        wait.until(ExpectedConditions.visibilityOf(titleProducts));
+        waitUntilElementIsVisible(titleProducts,wait);
         return new HomePage(driver);
     }
     public LoginPage badLogin(String username, String password) {
         userInput.sendKeys(username);
         passInput.sendKeys(password);
         logButton.click();
-        wait.until(ExpectedConditions.visibilityOf(errorLoginMess));
+        waitUntilElementIsVisible(errorLoginMess,wait);
         return this;
     }
 

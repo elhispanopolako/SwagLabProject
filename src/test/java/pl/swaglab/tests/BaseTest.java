@@ -34,10 +34,10 @@ public class BaseTest {
         driver.get("https://www.saucedemo.com/");
     }
 
-    @AfterMethod
+   /* @AfterMethod
     public void tearDown() {
         driver.quit();
-    }
+    }*/
 }
 
 

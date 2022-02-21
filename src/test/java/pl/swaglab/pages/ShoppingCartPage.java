@@ -3,10 +3,11 @@ package pl.swaglab.pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
+
+import static pl.swaglab.utils.WaitForElement.waitUntilElementIsInvisible;
+import static pl.swaglab.utils.WaitForElement.waitUntilElementVisibleAndClickable;
 
 public class ShoppingCartPage extends BasePage {
     @FindBy(css = ".cart_item button")
@@ -18,6 +19,9 @@ public class ShoppingCartPage extends BasePage {
     @FindBy(css = ".removed_cart_item")
     private WebElement removedItem;
 
+    @FindBy(css = ".cart_item")
+    private List<WebElement> cartItems;
+
 
 
     public ShoppingCartPage(WebDriver driver) {
@@ -26,11 +30,12 @@ public class ShoppingCartPage extends BasePage {
 
     public ShoppingCartPage removeProduct(int index) {
         removeButton.get(index).click();
-        wait.until(ExpectedConditions.invisibilityOf(removedItem));
+        waitUntilElementIsInvisible(removedItem,wait);
         return this;
     }
 
     public CheckoutPage clickCheckoutBtn() {
+        waitUntilElementVisibleAndClickable(checkoutBtn,wait);
         checkoutBtn.click();
         return  new CheckoutPage(driver);
     }
@@ -39,6 +44,11 @@ public class ShoppingCartPage extends BasePage {
         removedItem.isEnabled();
         return true;
     }
+
+    public int cartSize(){
+       return cartItems.size();
+    }
+
 
 
 }
