@@ -44,20 +44,22 @@ public class HomePageTest extends BaseTest {
         Assert.assertEquals(cartPage.cartSize(), 4);
         test.log(Status.PASS, "4 products in cart-Assertion Passed", SeleniumHelper.getScreenshot(driver));
     }
+
     @Test
     public void orderAllProductsTest() throws IOException {
         ExtentTest test = extentReports.createTest("Zamówienie wszytkie produkty z głównej strony");
-         HomePage homePage = new LoginPage(driver)
+        HomePage homePage = new LoginPage(driver)
                 .login("standard_user", "secret_sauce");
-         for (int i=0;i<homePage.productSize();i++){
-             homePage.addProduct(i);
-         }
-         Assert.assertEquals(homePage.shoppingBadgeText(),"6");
-         homePage.goToShoppingCart()
-                 .clickCheckoutBtn()
-                 .setCheckoutForm("Alex", "Testowy", "39340");
-        CheckoutPage checkPage=new CheckoutPage(driver);
-         Assert.assertEquals(checkPage.completeOrderText(), "THANK YOU FOR YOUR ORDER");
+        for (int i = 0; i < homePage.productSize(); i++) {
+            homePage.addProduct(i);
+        }
+        Assert.assertEquals(homePage.shoppingBadgeText(), "6");
+        test.log(Status.PASS, "Add 6 products-Assertions Passed", SeleniumHelper.getScreenshot(driver));
+        homePage.goToShoppingCart()
+                .clickCheckoutBtn()
+                .setCheckoutForm("Alex", "Testowy", "39340");
+        CheckoutPage checkPage = new CheckoutPage(driver);
+        Assert.assertEquals(checkPage.completeOrderText(), "THANK YOU FOR YOUR ORDER");
         test.log(Status.PASS, "Order Done-Assertions Passed", SeleniumHelper.getScreenshot(driver));
     }
 }
